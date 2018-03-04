@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors!</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            
+            //Function to random computer's input
+            function computerPlay(){
+                var temp = Math.floor(Math.random() * 3 + 1); 
+                if (temp == 0){
+                    return "Rock"; 
+                }
+                else if( temp == 1){
+                    return "Paper";
+                }
+                else return "Scissor";
+                console.log(temp);
+            }
+            
+            
+            //Actual Game Function
+            function game(){
+                var playerSelection, computerSelection;
+                var pscore = 0; 
+                var cscore = 0; 
+                
+                //Function to play a round of RPS
+                function round(){
+                    if(playerSelection == computerSelection){
+                        return "Tied"; 
+                    }
+                    else if(playerSelection == "Rock"){
+                        if(computerSelection == "Paper"){
+                            cscore += 1;
+                            return "You lose! " + computerSelection + " beats " + playerSelection + "!";
+                        }
+                        else{
+                            pscore += 1;
+                            return "You win! " + playerSelection + " beats " + computerSelection + "!";
+                        }
+                    }
+                    else if(playerSelection == "Paper"){
+                        if(computerSelection == "Scissor"){
+                            cscore += 1; 
+                            return "You lose! " + computerSelection + " beats " + playerSelection + "!";
+                        }
+                        else{
+                            pscore += 1;
+                            return "You win! " + playerSelection + " beats " + computerSelection + "!";
+                        }
+                    }
+                    else if(playerSelection == "Scissor"){
+                        if(computerSelection == "Rock"){
+                            cscore += 1;
+                            return "You lose! " + computerSelection + " beats " + playerSelection + "!";
+                        }
+                        else{
+                            pscore += 1;
+                            return "You win! " + playerSelection + " beats " + computerSelection + "!";
+                        }
+                    }
+                }
+                
+                while(pscore != 5 || cscore != 5){
+                    playerSelection = prompt("Choose your move!");
+                    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1, playerSelection.length);
+                    computerSelection = computerPlay; 
+                    console.log(round(playerSelection, computerSelection)); 
+                }
+            }
+            game();
+        </script>
+    </body>
+</html>
